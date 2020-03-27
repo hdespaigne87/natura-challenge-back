@@ -1,4 +1,4 @@
-package com.natura.challenge.back.fibonacci;
+package com.natura.challenge.back.algorithms.fibonacci;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
