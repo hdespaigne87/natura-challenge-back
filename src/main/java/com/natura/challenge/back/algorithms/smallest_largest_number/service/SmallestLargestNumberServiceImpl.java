@@ -13,9 +13,18 @@ public class SmallestLargestNumberServiceImpl implements SmallestLargestNumberSe
 
     @Override
     public SmallestLargestNumberResult smallestLargestNumber(@NotEmpty List<Integer> numbers) {
-        return SmallestLargestNumberResult.builder()
-                .largest(23)
-                .smallest(25)
+        SmallestLargestNumberResult result = SmallestLargestNumberResult.builder()
+                .largest(Integer.MIN_VALUE)
+                .smallest(Integer.MAX_VALUE)
                 .build();
+
+        for (Integer number : numbers) {
+            if (number > result.getLargest())
+                result.setLargest(number);
+            if (number < result.getSmallest())
+                result.setSmallest(number);
+        }
+
+        return result;
     }
 }

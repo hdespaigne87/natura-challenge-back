@@ -1,9 +1,11 @@
-package com.natura.challenge.back.nurseapp.model;
+package com.natura.challenge.back.nurseapp.model.database;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -27,14 +29,19 @@ public class VitalSign implements Serializable {
     private Patient patient;
     @Basic(optional = false)
     @Column(name = "registration_moment")
+    @NotNull
+    @JsonFormat(pattern = "MM/dd/yyyy HH:mm")
     private LocalDateTime registrationMoment;
     @Basic(optional = false)
     @Column(name = "blood_pressure_systolic")
+    @NotNull
     private Integer bloodPressureSystolic;
     @Basic(optional = false)
-    @Column(name = "blood_pressure_piastolic")
+    @Column(name = "blood_pressure_diastolic")
+    @NotNull
     private Integer bloodPressureDiastolic;
     @Basic(optional = false)
     @Column(name = "heart_rate")
+    @NotNull
     private Integer heartRate;
 }
